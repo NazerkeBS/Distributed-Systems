@@ -17,9 +17,10 @@ public class Main{
 	public static void main(String[] args){
 		printName("Nazerke");
 		
+		System.out.println(evaluatePolishNotation(args));
 		//replaceConsecutive(args);
 		//replaceAllOccurrences(args[0], args[1], args[2]);
-		printPascalTriangle(Integer.parseInt(args[0]));
+		//printPascalTriangle(Integer.parseInt(args[0]));
 
 	}
 	/* print args in order*/
@@ -131,10 +132,7 @@ public class Main{
 		}
 	}
 	
-	/*write a method for sqrt*/
-	private static void sqrt(int n){
-		
-	}
+	
 	
 	/*evaluate polish notation*/
 	private static int evaluatePolishNotation(String[] strs){
@@ -150,7 +148,6 @@ public class Main{
 			}
 		}
 		
-		Collections.reverse(nums);
 		Collections.reverse(operations);
 		
 		List<String> list = new ArrayList<>();
