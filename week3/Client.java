@@ -11,24 +11,24 @@ public class Client{
 		Person person1 = new Person("Maya", "happy family", "welcome, Naz");
 		Person person2 = new Person("John", "happy family", "welcome, Erke");
 
-			Socket socket = new Socket(computer, port);
-			//ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
-			ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-			outputStream.writeObject(person1);
-			outputStream.writeObject(person2);
+		Socket socket = new Socket(computer, port);
+		//ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
+		ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
+		outputStream.writeObject(person1);
+		outputStream.writeObject(person2);
             
-			//outputStream.flush();
+		//outputStream.flush();
 			
-			ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
+		ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 
-        	Person p1 = (Person) input.readObject();
+        Person p1 = (Person) input.readObject();
             
-            Person p2 = (Person) input.readObject();
-            input.close(); 
-            outputStream.close();   
+        Person p2 = (Person) input.readObject();
+        input.close(); 
+        outputStream.close();   
 
-			//inputStream.close();
-			//socket.close();
+		//inputStream.close();
+		//socket.close();
 
 			
 	}	
