@@ -1,26 +1,28 @@
-import java.util.*;
-import java.io.*;
 import java.net.*;
+import java.io.*;
+import java.util.*;
 
-class Client
-{
-    public static void main(String[] args)
-        throws Exception
-    {
-        int port = 12345;
-        String computer = "localhost";
+public class Client{
+	public static void main(String[] args) throws Exception {
+		Socket socket = new Socket("localhost", 12345);
 
-        try (
-            Socket s = new Socket(computer, port);
-            Scanner sc = new Scanner(s.getInputStream());
-            PrintWriter pw = new PrintWriter(s.getOutputStream());
-        ) {
-            pw.println(args[0]);
-            pw.flush();
+		Scanner sc = new Scanner(socket.getInputStream());
+		PrintWriter pw = new PrintWriter(socket.getOutputStream());
 
-            int textLength = sc.nextInt();
-            System.out.println(textLength);
-        }
+	    Scanner scanner = new Scanner(System.in);
+	    
+	    while(true){
+			String message = scanner.nextLine();
+        
+        	pw.println(message);
+        	pw.flush();
 
-    }
+        	String reply = sc.nextLine();
+        
+       	    System.out.println(reply);
+	    }
+       
+
+	}
+
 }
