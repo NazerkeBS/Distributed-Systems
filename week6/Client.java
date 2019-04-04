@@ -18,13 +18,13 @@ public class Client {
 
 		// read two objects from the server on port 12345 at localhost
 		ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
-        ConnectionToRMI obj1 = (ConnectionToRMI) input.readObject();          
+		ConnectionToRMI obj1 = (ConnectionToRMI) input.readObject();          
 		ConnectionToRMI obj2 = (ConnectionToRMI) input.readObject();          
-        
-        // get registry from the server listening on 12346 
-        Registry registry = LocateRegistry.getRegistry(obj1.getURL(), obj1.getPort());        
-        
-        CountInterface count = (CountInterface) registry.lookup(obj1.getServiceName());
+
+		// get registry from the server listening on 12346 
+		Registry registry = LocateRegistry.getRegistry(obj1.getURL(), obj1.getPort());        
+
+		CountInterface count = (CountInterface) registry.lookup(obj1.getServiceName());
 		int response = count.countMeIn();
 		System.out.println(response);
 
@@ -35,8 +35,7 @@ public class Client {
 
 		output.close();
 		input.close();
-		
-        
+
 	}
 
 }
