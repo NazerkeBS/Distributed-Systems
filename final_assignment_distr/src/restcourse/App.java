@@ -24,7 +24,7 @@ public class App {
 				//JdkHttpServerFactory.createHttpServer(BASE_URI, createApp());
         System.out.println("Server started on " + BASE_URI + "\n[kill the process to exit]");
 
-		JsonExample.test();
+		JsonExample.listSpecies();
     }
 
     public static ResourceConfig createApp() {

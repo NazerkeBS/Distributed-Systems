@@ -11,6 +11,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/*
+get all conversions in the buffer
+*/
 
 @Path("/getAll")
 public class GetAllService {

@@ -1,0 +1,12 @@
+How to run the program?
+
+1. the program runs with java 8 version so set the environment variable:
+	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+2. type 'ant run' which builds and runs the program
+3. open POSTMAN and type the url: 
+	http://localhost:9998/convertToKm/1500 
+which converts the given miles to km
+4. Check other producers: 
+	http://localhost:9998/convertToMiles 
+	http://localhost:9998/getAll
+5. The program used PokeAPI as a consumer to list pokemon species starting with 'pid' that are simply printed out in the console.

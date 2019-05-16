@@ -8,13 +8,17 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.net.HttpURLConnection;
+import java.util.*;
+import java.util.Iterator;
 
-import org.json.JSONException;
+import org.json.*;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class JsonExample {
 
   private static String readAll(Reader rd) throws IOException {
+
     StringBuilder sb = new StringBuilder();
     int cp;
     while ((cp = rd.read()) != -1) {
@@ -33,9 +37,9 @@ public class JsonExample {
     //InputStream is = new URL(url).openStream();
 
     try {
-      System.out.println("ahhhhhhhhhh");
       BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
       String jsonText = readAll(rd);
+
       JSONObject json = new JSONObject(jsonText);
       return json;
     } finally {
@@ -43,15 +47,24 @@ public class JsonExample {
     }
   }
 
-  public static void test(){
-    try {
-      JSONObject json = readJsonFromUrl("https://pokeapi.co/api/v2/berry/");
-      System.out.println(json.toString());
-      System.out.println(json.get("next"));
-    }catch(Exception e){
-
-      System.out.println(e);
-    }
+    //list pokemon species which starts with  'pid'
+    public static void listSpecies(){
+      List<String> species = new ArrayList<>();
+      try {
+        JSONObject json = readJsonFromUrl("https://pokeapi.co/api/v2/pokemon-species/");
+        JSONArray arr = json.getJSONArray("results");
+        for(int i=0; i<arr.length(); i++){
+          species.add(arr.getJSONObject(i).get("name").toString());
+        }
+        for(String name : species){
+          if(name.startsWith("pid")){
+            System.out.println(name);
+          }
+        }
+      }
+      catch(Exception e){
+        System.out.println(e);
+      }
 }
 
 
